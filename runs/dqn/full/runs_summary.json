@@ -1,0 +1,54 @@
+{
+  "mode": "full",
+  "normalize_reward": true,
+  "n_runs": 5,
+  "runs": [
+    {
+      "env_seed": 0,
+      "algo_seed": 1000,
+      "training_time_seconds": 290.5711317062378,
+      "best_mean_reward_eval": -9.975294159999999,
+      "final_mean_reward_eval": -20.507647000000002,
+      "run_dir": "runs/dqn/full/seed0"
+    },
+    {
+      "env_seed": 1,
+      "algo_seed": 1001,
+      "training_time_seconds": 311.390851020813,
+      "best_mean_reward_eval": -7.542646960000001,
+      "final_mean_reward_eval": -12.498823499999997,
+      "run_dir": "runs/dqn/full/seed1"
+    },
+    {
+      "env_seed": 2,
+      "algo_seed": 1002,
+      "training_time_seconds": 315.30427408218384,
+      "best_mean_reward_eval": -9.74941176,
+      "final_mean_reward_eval": -17.042058760000003,
+      "run_dir": "runs/dqn/full/seed2"
+    },
+    {
+      "env_seed": 3,
+      "algo_seed": 1003,
+      "training_time_seconds": 313.04838132858276,
+      "best_mean_reward_eval": -8.381764660000002,
+      "final_mean_reward_eval": -9.272058779999998,
+      "run_dir": "runs/dqn/full/seed3"
+    },
+    {
+      "env_seed": 4,
+      "algo_seed": 1004,
+      "training_time_seconds": 304.3423137664795,
+      "best_mean_reward_eval": -8.18588246,
+      "final_mean_reward_eval": -19.86411762,
+      "run_dir": "runs/dqn/full/seed4"
+    }
+  ],
+  "aggregate": {
+    "best_mean_reward": -8.767,
+    "best_std_reward": 0.9391753693868047,
+    "final_mean_reward": -15.836941132000002,
+    "final_std_reward": 4.329588014785157,
+    "total_training_time_seconds": 1534.6569519042969
+  }
+}

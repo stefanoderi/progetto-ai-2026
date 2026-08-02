@@ -1,0 +1,211 @@
+==============================================================================
+Sintesi finale del confronto fra metodi
+==============================================================================
+
+1) Tabella numerica completa
+------------------------------------------------------------------------------
+
+========== Policy: heuristic ==========
+============================================================
+SINTESI AGGREGATA SU 50 EPISODI
+============================================================
+  reward medio:               -104.28 (σ=155.83)
+  step medi per episodio:     14.8
+  tasso terminated:           94.0%
+    di cui vittorie:          72.0%
+    di cui sconfitte totali:  22.0%
+  tasso truncated:            8.0%
+  tasso azioni invalide:      0.0%
+  episodi con critical comp.: 32.0%
+  totale azioni per tipo:     analyse=316, do_nothing=99, isolate=150, restore=175
+============================================================
+
+Salvato: runs/final_comparison/evaluations/eval_heuristic_seed42_steps.jsonl
+Salvato: runs/final_comparison/evaluations/eval_heuristic_seed42_summaries.jsonl
+
+========== Policy: do_nothing ==========
+============================================================
+SINTESI AGGREGATA SU 50 EPISODI
+============================================================
+  reward medio:               -160.64 (σ=82.22)
+  step medi per episodio:     16.0
+  tasso terminated:           100.0%
+    di cui vittorie:          0.0%
+    di cui sconfitte totali:  100.0%
+  tasso truncated:            0.0%
+  tasso azioni invalide:      0.0%
+  episodi con critical comp.: 100.0%
+  totale azioni per tipo:     do_nothing=799
+============================================================
+
+Salvato: runs/final_comparison/evaluations/eval_do_nothing_seed42_steps.jsonl
+Salvato: runs/final_comparison/evaluations/eval_do_nothing_seed42_summaries.jsonl
+
+========== Policy: oracle ==========
+============================================================
+SINTESI AGGREGATA SU 50 EPISODI
+============================================================
+  reward medio:               -2.00 (σ=0.00)
+  step medi per episodio:     5.0
+  tasso terminated:           100.0%
+    di cui vittorie:          100.0%
+    di cui sconfitte totali:  0.0%
+  tasso truncated:            0.0%
+  tasso azioni invalide:      0.0%
+  episodi con critical comp.: 0.0%
+  totale azioni per tipo:     do_nothing=200, restore=50
+============================================================
+
+Salvato: runs/final_comparison/evaluations/eval_oracle_seed42_steps.jsonl
+Salvato: runs/final_comparison/evaluations/eval_oracle_seed42_summaries.jsonl
+
+========== Policy: panic_isolation ==========
+============================================================
+SINTESI AGGREGATA SU 50 EPISODI
+============================================================
+  reward medio:               -364.11 (σ=122.24)
+  step medi per episodio:     40.0
+  tasso terminated:           0.0%
+    di cui vittorie:          0.0%
+    di cui sconfitte totali:  0.0%
+  tasso truncated:            100.0%
+  tasso azioni invalide:      0.0%
+  episodi con critical comp.: 4.0%
+  totale azioni per tipo:     do_nothing=1606, isolate=394
+============================================================
+
+Salvato: runs/final_comparison/evaluations/eval_panic_isolation_seed42_steps.jsonl
+Salvato: runs/final_comparison/evaluations/eval_panic_isolation_seed42_summaries.jsonl
+
+========== Policy: random ==========
+============================================================
+SINTESI AGGREGATA SU 50 EPISODI
+============================================================
+  reward medio:               -352.12 (σ=206.97)
+  step medi per episodio:     29.9
+  tasso terminated:           48.0%
+    di cui vittorie:          16.0%
+    di cui sconfitte totali:  32.0%
+  tasso truncated:            52.0%
+  tasso azioni invalide:      28.4%
+  episodi con critical comp.: 74.0%
+  totale azioni per tipo:     analyse=354, do_nothing=43, invalid=428, isolate=251, reconnect=81, restore=337
+============================================================
+
+Salvato: runs/final_comparison/evaluations/eval_random_seed42_steps.jsonl
+Salvato: runs/final_comparison/evaluations/eval_random_seed42_summaries.jsonl
+
+========== Policy: dqn ==========
+============================================================
+SINTESI AGGREGATA SU 50 EPISODI
+============================================================
+  reward medio:               -141.22 (σ=142.75)
+  step medi per episodio:     33.3
+  tasso terminated:           36.0%
+    di cui vittorie:          0.0%
+    di cui sconfitte totali:  36.0%
+  tasso truncated:            64.0%
+  tasso azioni invalide:      49.0%
+  episodi con critical comp.: 42.0%
+  totale azioni per tipo:     analyse=74, invalid=820, restore=773
+============================================================
+
+Salvato: runs/final_comparison/evaluations/eval_dqn_best_model.zip__seed42_steps.jsonl
+Salvato: runs/final_comparison/evaluations/eval_dqn_best_model.zip__seed42_summaries.jsonl
+
+========== Policy: ppo ==========
+============================================================
+SINTESI AGGREGATA SU 50 EPISODI
+============================================================
+  reward medio:               -26.82 (σ=55.58)
+  step medi per episodio:     11.4
+  tasso terminated:           100.0%
+    di cui vittorie:          88.0%
+    di cui sconfitte totali:  12.0%
+  tasso truncated:            0.0%
+  tasso azioni invalide:      12.4%
+  episodi con critical comp.: 12.0%
+  totale azioni per tipo:     analyse=313, invalid=91, restore=165
+============================================================
+
+Salvato: runs/final_comparison/evaluations/eval_ppo_best_model.zip__seed42_steps.jsonl
+Salvato: runs/final_comparison/evaluations/eval_ppo_best_model.zip__seed42_summaries.jsonl
+
+========== Tabella di confronto ==========
+policy               reward_mean  reward_std  steps_mean  term%  win%   wipe%  trunc%  inv%  crit%  comp_val
+-------------------  -----------  ----------  ----------  -----  -----  -----  ------  ----  -----  --------
+heuristic            -104.28      155.83      14.8        94.0   72.0   22.0   8.0     0.0   32.0   3.35    
+do_nothing           -160.64      82.22       16.0        100.0  0.0    100.0  0.0     0.0   100.0  9.99    
+oracle               -2.00        0.00        5.0         100.0  100.0  0.0    0.0     0.0   0.0    0.00    
+panic_isolation      -364.11      122.24      40.0        0.0    0.0    0.0    100.0   0.0   4.0    2.45    
+random               -352.12      206.97      29.9        48.0   16.0   32.0   52.0    28.4  74.0   8.03    
+dqn[best_model.zip]  -141.22      142.75      33.3        36.0   0.0    36.0   64.0    49.0  42.0   4.48    
+ppo[best_model.zip]  -26.82       55.58       11.4        100.0  88.0   12.0   0.0     12.4  12.0   1.30
+
+2) Confronti appaiati (bootstrap CI 95% sulla differenza)
+------------------------------------------------------------------------------
+Nota: ogni confronto usa gli stessi 50 scenari (stesso seed condiviso fra
+policy). Δ = mean(A) - mean(B) con A=prima policy menzionata. *** = 
+0 fuori dal CI95 al 5%; n.s. = differenza non significativa.
+
+  PPO        vs Heuristic     Δ = +77.47  CI95 [+36.85, +120.49]  ***
+  DQN        vs Heuristic     Δ = -36.94  CI95 [-90.94, +16.62]  n.s.
+  PPO        vs DQN           Δ = +114.41  CI95 [+72.19, +159.36]  ***
+  PPO        vs DoNothing     Δ = +133.82  CI95 [+107.29, +161.42]  ***
+  DQN        vs DoNothing     Δ = +19.42  CI95 [-27.58, +65.10]  n.s.
+
+3) Diagnosi qualitativa per ciascun agente RL
+------------------------------------------------------------------------------
+  DQN (dqn[best_model.zip]):
+     reward            = -141.22
+     vs do_nothing     = +19.42
+     vs heuristic      = -36.94
+     vs oracle (tetto) = -139.22
+     win%              = 0.0%
+     invalid%          = 49.0%
+     comp_val          = 4.48
+     diagnosi          = marginalmente meglio di do_nothing
+
+  PPO (ppo[best_model.zip]):
+     reward            = -26.82
+     vs do_nothing     = +133.82
+     vs heuristic      = +77.46
+     vs oracle (tetto) = -24.82
+     win%              = 88.0%
+     invalid%          = 12.4%
+     comp_val          = 1.30
+     diagnosi          = appreso (sopra anche la heuristic)
+
+4) Stabilita' del training fra seed (da runs_summary.json)
+------------------------------------------------------------------------------
+  DQN: best_eval mean = -8.77 ± 0.94   final_eval mean = -15.84 ± 4.33
+  PPO: best_eval mean = -25.70 ± 3.37   final_eval mean = -36.40 ± 6.42
+
+  Nota: i valori in questa sezione sono nelle scale di
+        TRAINING (DQN normalizzata in [-1,0], PPO naturale).
+        La tabella della sezione 1 e' invece in scala
+        naturale per entrambi gli algoritmi.
+
+5) Conclusioni formali
+------------------------------------------------------------------------------
+
+A) Gli agenti RL battono le baseline?
+   - PPO: SI, batte la heuristic in modo significativo (Δ = +77.47, CI95 [+36.85, +120.49]).
+   - DQN: pareggio statistico con la heuristic (Δ = -36.94).
+   - Su do_nothing (limite inferiore di confronto):
+       PPO  vs  do_nothing : Δ = +133.82  CI95 [+107.29, +161.42]  ***
+       DQN  vs  do_nothing : Δ = +19.42  CI95 [-27.58, +65.10]  n.s.
+
+B) DQN e PPO si comportano in modo simile o diverso?
+     PPO  vs  DQN: Δ = +114.41  CI95 [+72.19, +159.36]  ***
+     -> PPO e' significativamente meglio di DQN: i due algoritmi NON sono equivalenti.
+   Differenze qualitative:
+     win%        DQN =   0.00   PPO =  88.00   (Δ = +88.00)
+     inv%        DQN =  49.00   PPO =  12.40   (Δ = -36.60)
+     comp_val    DQN =   4.48   PPO =   1.30   (Δ = -3.18)
+
+C) Il problema e' stato appreso o solo "sopravvissuto"?
+   - DQN: marginalmente meglio di do_nothing
+   - PPO: appreso (sopra anche la heuristic)
+
+==============================================================================

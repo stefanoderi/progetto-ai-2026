@@ -1,0 +1,55 @@
+{
+  "algorithm": "PPO",
+  "mode": "full",
+  "normalize_reward": false,
+  "n_runs": 5,
+  "runs": [
+    {
+      "env_seed": 0,
+      "algo_seed": 1000,
+      "training_time_seconds": 449.8977861404419,
+      "best_mean_reward_eval": -27.905,
+      "final_mean_reward_eval": -45.845,
+      "run_dir": "runs/ppo/full/seed0"
+    },
+    {
+      "env_seed": 1,
+      "algo_seed": 1001,
+      "training_time_seconds": 463.6584053039551,
+      "best_mean_reward_eval": -19.72,
+      "final_mean_reward_eval": -34.33,
+      "run_dir": "runs/ppo/full/seed1"
+    },
+    {
+      "env_seed": 2,
+      "algo_seed": 1002,
+      "training_time_seconds": 472.74525785446167,
+      "best_mean_reward_eval": -28.19,
+      "final_mean_reward_eval": -33.025,
+      "run_dir": "runs/ppo/full/seed2"
+    },
+    {
+      "env_seed": 3,
+      "algo_seed": 1003,
+      "training_time_seconds": 464.23611974716187,
+      "best_mean_reward_eval": -28.455,
+      "final_mean_reward_eval": -41.215,
+      "run_dir": "runs/ppo/full/seed3"
+    },
+    {
+      "env_seed": 4,
+      "algo_seed": 1004,
+      "training_time_seconds": 471.71396350860596,
+      "best_mean_reward_eval": -24.21,
+      "final_mean_reward_eval": -27.58,
+      "run_dir": "runs/ppo/full/seed4"
+    }
+  ],
+  "aggregate": {
+    "best_mean_reward": -25.695999999999998,
+    "best_std_reward": 3.3654886717979013,
+    "final_mean_reward": -36.399,
+    "final_std_reward": 6.4165437737149436,
+    "total_training_time_seconds": 2322.2515325546265
+  }
+}

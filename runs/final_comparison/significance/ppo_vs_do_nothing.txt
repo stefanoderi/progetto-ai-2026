@@ -1,0 +1,18 @@
+========================================================================
+Bootstrap CI appaiato: PPO seed 3  vs  DoNothing
+========================================================================
+
+Statistiche descrittive (su n_episodi):
+  PPO seed 3                     mean =  -26.815  std =  55.581
+  DoNothing                      mean = -160.640  std =  82.216
+  numero episodi appaiati:        50
+
+Bootstrap sui delta appaiati (delta = A - B):
+  mean(delta)            = +133.825
+  CI 95% per mean(delta) = [+107.289, +161.420]
+  p-value bilaterale     = 0.0000
+  n_bootstrap            = 10000
+
+Interpretazione: 0 NON e' nel CI95 -> differenza significativa al 5%.
+                 PPO seed 3 BATTE DoNothing (vantaggio medio = 133.825 punti di reward).
+========================================================================

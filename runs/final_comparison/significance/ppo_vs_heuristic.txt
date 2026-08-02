@@ -1,0 +1,18 @@
+========================================================================
+Bootstrap CI appaiato: PPO seed 3  vs  Heuristic
+========================================================================
+
+Statistiche descrittive (su n_episodi):
+  PPO seed 3                     mean =  -26.815  std =  55.581
+  Heuristic                      mean = -104.280  std = 155.826
+  numero episodi appaiati:        50
+
+Bootstrap sui delta appaiati (delta = A - B):
+  mean(delta)            = +77.465
+  CI 95% per mean(delta) = [+36.849, +120.486]
+  p-value bilaterale     = 0.0000
+  n_bootstrap            = 10000
+
+Interpretazione: 0 NON e' nel CI95 -> differenza significativa al 5%.
+                 PPO seed 3 BATTE Heuristic (vantaggio medio = 77.465 punti di reward).
+========================================================================

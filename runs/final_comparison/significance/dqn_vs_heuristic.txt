@@ -1,0 +1,17 @@
+========================================================================
+Bootstrap CI appaiato: DQN seed 1  vs  Heuristic
+========================================================================
+
+Statistiche descrittive (su n_episodi):
+  DQN seed 1                     mean = -141.220  std = 142.749
+  Heuristic                      mean = -104.280  std = 155.826
+  numero episodi appaiati:        50
+
+Bootstrap sui delta appaiati (delta = A - B):
+  mean(delta)            = -36.940
+  CI 95% per mean(delta) = [-90.941, +16.616]
+  p-value bilaterale     = 0.1732
+  n_bootstrap            = 10000
+
+Interpretazione: 0 E' nel CI95 -> nessuna evidenza di differenza significativa al 5%.
+========================================================================

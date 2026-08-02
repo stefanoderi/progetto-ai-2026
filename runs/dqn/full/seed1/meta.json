@@ -1,0 +1,28 @@
+{
+  "mode": "full",
+  "algo_seed": 1001,
+  "normalize_reward": true,
+  "reward_scale_denominator": 17.0,
+  "total_timesteps": 500000,
+  "eval_freq": 25000,
+  "n_eval_episodes": 50,
+  "hparams": {
+    "learning_rate": 0.0001,
+    "buffer_size": 1000000,
+    "learning_starts": 5000,
+    "batch_size": 32,
+    "tau": 1.0,
+    "gamma": 0.99,
+    "train_freq": 4,
+    "gradient_steps": 1,
+    "target_update_interval": 10000,
+    "exploration_fraction": 0.1,
+    "exploration_initial_eps": 1.0,
+    "exploration_final_eps": 0.05,
+    "max_grad_norm": 10.0
+  },
+  "training_time_seconds": 311.390851020813,
+  "best_mean_reward_eval": -7.542646960000001,
+  "final_mean_reward_eval": -12.498823499999997,
+  "sb3_version": "2.8.0"
+}

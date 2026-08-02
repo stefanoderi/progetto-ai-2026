@@ -1,0 +1,104 @@
+{
+  "seed": 42,
+  "n_episodes": 50,
+  "policies": {
+    "ppo": {
+      "action_distribution": {
+        "total_steps": 569,
+        "category_counts": {
+          "restore": 165,
+          "analyse": 313,
+          "invalid": 91
+        },
+        "invalid_rate": 0.15992970123022848,
+        "target_type_counts": {
+          "user": 172,
+          "service": 272,
+          "critical": 34
+        },
+        "invalid_type_counts": {
+          "reconnect": 80,
+          "restore": 11
+        }
+      },
+      "conditional": {
+        "informed_intervention": {
+          "isolate": 0,
+          "restore": 0
+        },
+        "blind_intervention": {
+          "isolate": 0,
+          "restore": 165
+        },
+        "healthy_isolations": 0,
+        "healthy_reconnected": 0,
+        "reaction_seen_by_type": {
+          "user": 69,
+          "service": 12,
+          "critical": 4
+        },
+        "reaction_mean_latency": {
+          "user": 1.0
+        },
+        "reaction_unaddressed": {
+          "user": 20,
+          "service": 12,
+          "critical": 4
+        }
+      },
+      "baseline": {
+        "agreement_rate": 2.10896309314587,
+        "agree": 12,
+        "total": 569
+      }
+    },
+    "dqn": {
+      "action_distribution": {
+        "total_steps": 1667,
+        "category_counts": {
+          "restore": 773,
+          "invalid": 820,
+          "analyse": 74
+        },
+        "invalid_rate": 0.49190161967606477,
+        "target_type_counts": {
+          "user": 847
+        },
+        "invalid_type_counts": {
+          "reconnect": 622,
+          "restore": 198
+        }
+      },
+      "conditional": {
+        "informed_intervention": {
+          "isolate": 0,
+          "restore": 45
+        },
+        "blind_intervention": {
+          "isolate": 0,
+          "restore": 728
+        },
+        "healthy_isolations": 0,
+        "healthy_reconnected": 0,
+        "reaction_seen_by_type": {
+          "user": 127,
+          "service": 42,
+          "critical": 21
+        },
+        "reaction_mean_latency": {
+          "user": 1.3287671232876712
+        },
+        "reaction_unaddressed": {
+          "user": 54,
+          "service": 42,
+          "critical": 21
+        }
+      },
+      "baseline": {
+        "agreement_rate": 0.23995200959808038,
+        "agree": 4,
+        "total": 1667
+      }
+    }
+  }
+}

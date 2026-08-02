@@ -1,0 +1,223 @@
+==============================================================================
+ANALISI DELLA POLICY APPRESA
+==============================================================================
+seed=42  n_episodes=50
+ppo_model=runs/ppo/full/seed3/best_model/best_model.zip
+dqn_model=runs/dqn/full/seed1/best_model/best_model.zip
+
+##############################################################################
+# ANALISI POLICY: ppo
+##############################################################################
+
+== A == 
+
+Distribuzione delle azioni (aggregata su tutti gli episodi)
+
+categoria   conteggio  quota 
+----------  ---------  ------
+analyse     313        55.0% 
+isolate     0          0.0%  
+restore     165        29.0% 
+reconnect   0          0.0%  
+do_nothing  0          0.0%  
+invalid     91         16.0% 
+TOTALE      569        100.0%
+
+Azioni con bersaglio, ripartite per tipo di nodo:
+tipo nodo bersaglio  conteggio  quota
+-------------------  ---------  -----
+user                 172        36.0%
+service              272        56.9%
+critical             34         7.1% 
+
+Dettaglio delle sole azioni invalide (tipo originale decodificato):
+tipo originale invalida  conteggio  quota
+-----------------------  ---------  -----
+reconnect                80         87.9%
+restore                  11         12.1%
+
+tipo nodo bersaglio invalide  conteggio
+----------------------------  ---------
+user                          34       
+service                       0        
+critical                      57        
+
+== B == 
+
+Comportamento condizionato allo stato
+
+B1 — L'intervento e' preceduto da un Analyse sullo stesso nodo?
+     (misura se la policy raccoglie informazione prima di agire)
+intervento  preceduto da Analyse  alla cieca  totale  quota informata
+----------  --------------------  ----------  ------  ---------------
+isolate     0                     0           0       n/a            
+restore     0                     165         165     0.0%           
+
+B2 — Il contenimento di un nodo sano viene poi corretto con Reconnect?
+     Nessun nodo e' mai stato isolato mentre era sano (la policy non usa l'isolamento come contenimento, oppure isola solo nodi realmente compromessi).
+
+B3 — Reazione al primo compromesso, distinta per tipo di nodo
+     (latenza = passi fra il compromesso reale e il primo Isolate/Restore)
+tipo nodo  compromissioni  affrontate  latenza media  primo intervento
+---------  --------------  ----------  -------------  ----------------
+user       69              71.0%       1.00           restore=49      
+service    12              0.0%        n/a            -               
+critical   4               0.0%        n/a            -                
+
+== D == 
+
+Confronto con la baseline heuristic — policy: ppo
+  Accordo sull'azione esatta: 12/569 passi (2.1%).
+
+  Divergenze piu' frequenti (categoria della policy vs della heuristic):
+azione policy vs heuristic  conteggio
+--------------------------  ---------
+analyse vs do_nothing       207      
+restore vs analyse          147      
+analyse vs analyse          91       
+invalid vs restore          59       
+restore vs do_nothing       17       
+invalid vs analyse          15        
+
+== E == 
+
+Episodi rappresentativi — policy: ppo
+ep  motivo                                         reward   step  vittoria  sconf.tot  invalide
+--  --------------------------------------  -------  ----  --------  ---------  --------
+36  episodio difficile con reward migliore  -82.50   10    False     True       60.0%   
+43  episodio rimanente con reward peggiore  -237.00  21    False     True       76.2%   
+4   episodio con piu' azioni rare           -192.50  17    False     True       82.4%   
+
+  Log passo-passo completo dei tre episodi in: runs/policy_analysis/representative_episodes_ppo.txt 
+
+##############################################################################
+# ANALISI POLICY: dqn
+##############################################################################
+
+== A == 
+
+Distribuzione delle azioni (aggregata su tutti gli episodi)
+
+categoria   conteggio  quota 
+----------  ---------  ------
+analyse     74         4.4%  
+isolate     0          0.0%  
+restore     773        46.4% 
+reconnect   0          0.0%  
+do_nothing  0          0.0%  
+invalid     820        49.2% 
+TOTALE      1667       100.0%
+
+Azioni con bersaglio, ripartite per tipo di nodo:
+tipo nodo bersaglio  conteggio  quota 
+-------------------  ---------  ------
+user                 847        100.0%
+service              0          0.0%  
+critical             0          0.0%  
+
+Dettaglio delle sole azioni invalide (tipo originale decodificato):
+tipo originale invalida  conteggio  quota
+-----------------------  ---------  -----
+reconnect                622        75.9%
+restore                  198        24.1%
+
+tipo nodo bersaglio invalide  conteggio
+----------------------------  ---------
+user                          820      
+service                       0        
+critical                      0         
+
+== B == 
+
+Comportamento condizionato allo stato
+
+B1 — L'intervento e' preceduto da un Analyse sullo stesso nodo?
+     (misura se la policy raccoglie informazione prima di agire)
+intervento  preceduto da Analyse  alla cieca  totale  quota informata
+----------  --------------------  ----------  ------  ---------------
+isolate     0                     0           0       n/a            
+restore     45                    728         773     5.8%           
+
+B2 — Il contenimento di un nodo sano viene poi corretto con Reconnect?
+     Nessun nodo e' mai stato isolato mentre era sano (la policy non usa l'isolamento come contenimento, oppure isola solo nodi realmente compromessi).
+
+B3 — Reazione al primo compromesso, distinta per tipo di nodo
+     (latenza = passi fra il compromesso reale e il primo Isolate/Restore)
+tipo nodo  compromissioni  affrontate  latenza media  primo intervento
+---------  --------------  ----------  -------------  ----------------
+user       127             57.5%       1.33           restore=73      
+service    42              0.0%        n/a            -               
+critical   21              0.0%        n/a            -                
+
+== D == 
+
+Confronto con la baseline heuristic — policy: dqn
+  Accordo sull'azione esatta: 4/1667 passi (0.2%).
+
+  Divergenze piu' frequenti (categoria della policy vs della heuristic):
+azione policy vs heuristic  conteggio
+--------------------------  ---------
+restore vs analyse          620      
+invalid vs do_nothing       463      
+invalid vs analyse          352      
+restore vs do_nothing       141      
+analyse vs analyse          71       
+restore vs restore          5         
+
+== E == 
+
+Episodi rappresentativi — policy: dqn
+ep  motivo                                      reward   step  vittoria  sconf.tot  invalide
+--  --------------------------------------  -------  ----  --------  ---------  --------
+3   episodio difficile con reward migliore  -101.75  8     False     True       37.5%   
+42  episodio rimanente con reward peggiore  -587.50  40    False     False      45.0%   
+6   episodio con piu' azioni rare           -344.00  25    False     True       64.0%   
+
+  Log passo-passo completo dei tre episodi in: runs/policy_analysis/representative_episodes_dqn.txt 
+
+##############################################################################
+# SCENARI CONTROLLATI (confronto fra tutte le policy)
+##############################################################################
+
+== C == 
+
+Scenari controllati a stato noto
+  Ogni riga e' uno stato costruito a mano; ogni colonna e' l'azione
+  deterministica scelta da quella policy in quello stato.
+
+scenario               ppo         dqn           heuristic     oracle      
+---------------------  ----------  ------------  ------------  ------------
+user_alert_ignoto      Restore(4)  Restore(4)    Analyse(4)    Restore(4)  
+user_noto_comp         Analyse(5)  Restore(0)    Isolate(4)    Restore(4)  
+critical_alert_ignoto  Analyse(5)  Restore(0)    Analyse(7)    Restore(7)  
+critical_noto_comp     Analyse(5)  Restore(0)    Restore(7)    Restore(7)  
+user_perif_noto_comp   Analyse(5)  Restore(0)    Isolate(0)    Restore(0)  
+service_noto_comp      Analyse(5)  Restore(0)    Isolate(5)    Restore(5)  
+isolato_noto_sano      Analyse(5)  Restore(0)    Reconnect(0)  Reconnect(0)
+solo_restore_in_corso  Restore(3)  Reconnect(3)  DoNothing     DoNothing   
+user_e_critical_noti   Analyse(5)  Restore(0)    Restore(7)    Restore(7)  
+falso_alert            Restore(1)  Restore(0)    Analyse(1)    DoNothing   
+
+Stato di ciascuno scenario (per rilettura):
+  user_alert_ignoto      0:U[....?] 1:U[....?] 2:U[....?] 3:U[....?] 4:U[c..a?] 5:S[....?] 6:S[....?] 7:C[....?]
+                         (user centrale con alert, stato ignoto)
+  user_noto_comp         0:U[....?] 1:U[....?] 2:U[....?] 3:U[....?] 4:U[c...X] 5:S[....?] 6:S[....?] 7:C[....?]
+                         (user centrale noto compromesso, non isolato)
+  critical_alert_ignoto  0:U[....?] 1:U[....?] 2:U[....?] 3:U[....?] 4:U[....?] 5:S[....?] 6:S[....?] 7:C[c..a?]
+                         (critico con alert, stato ignoto)
+  critical_noto_comp     0:U[....?] 1:U[....?] 2:U[....?] 3:U[....?] 4:U[....?] 5:S[....?] 6:S[....?] 7:C[c...X]
+                         (critico noto compromesso, non isolato)
+  user_perif_noto_comp   0:U[c...X] 1:U[....?] 2:U[....?] 3:U[....?] 4:U[....?] 5:S[....?] 6:S[....?] 7:C[....?]
+                         (user periferico (nodo 0) noto compromesso)
+  service_noto_comp      0:U[....?] 1:U[....?] 2:U[....?] 3:U[....?] 4:U[....?] 5:S[c...X] 6:S[....?] 7:C[....?]
+                         (service (nodo 5) noto compromesso)
+  isolato_noto_sano      0:U[.i..h] 1:U[....?] 2:U[....?] 3:U[....?] 4:U[....?] 5:S[....?] 6:S[....?] 7:C[....?]
+                         (nodo isolato e noto sano (contenimento da correggere))
+  solo_restore_in_corso  0:U[....?] 1:U[....?] 2:U[....?] 3:U[..R.?] 4:U[....?] 5:S[....?] 6:S[....?] 7:C[....?]
+                         (un nodo in restore, resto della rete pulito)
+  user_e_critical_noti   0:U[c...X] 1:U[....?] 2:U[....?] 3:U[....?] 4:U[....?] 5:S[....?] 6:S[....?] 7:C[c...X]
+                         (user (0) e critico (7) entrambi noti compromessi)
+  falso_alert            0:U[....?] 1:U[...a?] 2:U[....?] 3:U[....?] 4:U[....?] 5:S[....?] 6:S[....?] 7:C[....?]
+                         (alert su nodo sano, stato ignoto (falso positivo)) 
+
+[artefatti scritti in: runs/policy_analysis/]

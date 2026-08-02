@@ -1,0 +1,98 @@
+Episodi rappresentativi — policy: dqn
+======================================================================
+
+Legenda dello stato dei nodi (formato: id:Tipo[c i R a ?]):
+  Tipo:   U=User  S=Service  C=Critical
+  c = compromesso
+  i = isolato (non in restore)
+  R = in restore
+  a = alert attivo
+  ? = analysis sconosciuto,  h = noto sano,  X = noto compromesso
+
+----------------------------------------------------------------------
+Episodio #3 — episodio difficile con reward migliore
+  reward=-101.75  step=8  vittoria=False  sconfitta_tot=True  critico_mai_comp=False  invalide=37.5%
+
+[t=01] act=Restore(0)     inv=0 rew= -5.00 cs=0 nC=2 vC=4  | 0:U[..R.?] 1:U[....?] 2:U[....?] 3:U[c...?] 4:U[....?] 5:S[....?] 6:S[c..a?] 7:C[....?]
+[t=02] act=Restore(0)     inv=1 rew= -5.25 cs=0 nC=2 vC=4  | 0:U[..R.?] 1:U[...a?] 2:U[....?] 3:U[c..a?] 4:U[....?] 5:S[....?] 6:S[c..a?] 7:C[....?]
+[t=03] act=Restore(2)     inv=0 rew=-11.00 cs=0 nC=3 vC=10 | 0:U[....?] 1:U[....?] 2:U[..R.?] 3:U[c...?] 4:U[....?] 5:S[....?] 6:S[c..a?] 7:C[c...?]
+[t=04] act=Restore(0)     inv=0 rew=-15.00 cs=0 nC=4 vC=13 | 0:U[..R.?] 1:U[....?] 2:U[..R.?] 3:U[c...?] 4:U[....?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=05] act=Restore(0)     inv=1 rew=-15.25 cs=0 nC=5 vC=14 | 0:U[..R.?] 1:U[c...?] 2:U[...a?] 3:U[c..a?] 4:U[....?] 5:S[c...?] 6:S[c...?] 7:C[c...?]
+[t=06] act=Restore(2)     inv=0 rew=-16.00 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c..a?] 2:U[..R.?] 3:U[c..a?] 4:U[c...?] 5:S[c...?] 6:S[c..a?] 7:C[c..a?]
+[t=07] act=Analyse(4)     inv=0 rew=-17.00 cs=0 nC=7 vC=16 | 0:U[c...?] 1:U[c..a?] 2:U[..R.?] 3:U[c..a?] 4:U[c..aX] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=08] act=Reconnect(1)   inv=1 rew=-17.25 cs=0 nC=8 vC=17 | 0:U[c...?] 1:U[c...?] 2:U[c..a?] 3:U[c..a?] 4:U[c..aX] 5:S[c..a?] 6:S[c..a?] 7:C[c...?]
+
+----------------------------------------------------------------------
+Episodio #42 — episodio rimanente con reward peggiore
+  reward=-587.50  step=40  vittoria=False  sconfitta_tot=False  critico_mai_comp=False  invalide=45.0%
+
+[t=01] act=Restore(4)     inv=0 rew= -2.00 cs=0 nC=1 vC=1  | 0:U[...a?] 1:U[....?] 2:U[....?] 3:U[c..a?] 4:U[..R.?] 5:S[....?] 6:S[....?] 7:C[....?]
+[t=02] act=Restore(0)     inv=0 rew= -3.00 cs=0 nC=1 vC=1  | 0:U[..R.?] 1:U[....?] 2:U[....?] 3:U[c..a?] 4:U[..R.?] 5:S[...a?] 6:S[....?] 7:C[...a?]
+[t=03] act=Restore(4)     inv=1 rew= -6.25 cs=0 nC=3 vC=5  | 0:U[..R.?] 1:U[....?] 2:U[c..a?] 3:U[c..a?] 4:U[....?] 5:S[....?] 6:S[c..a?] 7:C[....?]
+[t=04] act=Restore(2)     inv=0 rew=-11.00 cs=0 nC=3 vC=10 | 0:U[....?] 1:U[....?] 2:U[..R.?] 3:U[c..a?] 4:U[....?] 5:S[....?] 6:S[c...?] 7:C[c..a?]
+[t=05] act=Restore(0)     inv=0 rew=-12.00 cs=0 nC=3 vC=10 | 0:U[..R.?] 1:U[....?] 2:U[..R.?] 3:U[c..a?] 4:U[...a?] 5:S[....?] 6:S[c..a?] 7:C[c..a?]
+[t=06] act=Restore(4)     inv=0 rew=-15.00 cs=0 nC=4 vC=13 | 0:U[..R.?] 1:U[...a?] 2:U[....?] 3:U[c...?] 4:U[..R.?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=07] act=Restore(0)     inv=1 rew=-15.25 cs=0 nC=5 vC=14 | 0:U[....?] 1:U[....?] 2:U[c..a?] 3:U[c..a?] 4:U[..R.?] 5:S[c...?] 6:S[c..a?] 7:C[c...?]
+[t=08] act=Restore(2)     inv=0 rew=-14.00 cs=0 nC=4 vC=13 | 0:U[....?] 1:U[....?] 2:U[..R.?] 3:U[c...?] 4:U[....?] 5:S[c...?] 6:S[c..a?] 7:C[c..a?]
+[t=09] act=Restore(0)     inv=0 rew=-15.00 cs=0 nC=4 vC=13 | 0:U[..R.?] 1:U[....?] 2:U[..R.?] 3:U[c..a?] 4:U[....?] 5:S[c..a?] 6:S[c..a?] 7:C[c...?]
+[t=10] act=Restore(0)     inv=1 rew=-15.25 cs=0 nC=5 vC=14 | 0:U[..R.?] 1:U[....?] 2:U[...a?] 3:U[c..a?] 4:U[c...?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=11] act=Reconnect(0)   inv=1 rew=-14.25 cs=0 nC=5 vC=14 | 0:U[....?] 1:U[....?] 2:U[...a?] 3:U[c..a?] 4:U[c..a?] 5:S[c...?] 6:S[c..a?] 7:C[c..a?]
+[t=12] act=Reconnect(1)   inv=1 rew=-14.25 cs=0 nC=5 vC=14 | 0:U[....?] 1:U[....?] 2:U[....?] 3:U[c..a?] 4:U[c...?] 5:S[c..a?] 6:S[c...?] 7:C[c...?]
+[t=13] act=Restore(0)     inv=0 rew=-16.00 cs=0 nC=6 vC=15 | 0:U[..R.?] 1:U[....?] 2:U[c..a?] 3:U[c..a?] 4:U[c...?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=14] act=Reconnect(0)   inv=1 rew=-16.25 cs=0 nC=6 vC=15 | 0:U[..R.?] 1:U[....?] 2:U[c...?] 3:U[c..a?] 4:U[c..a?] 5:S[c..a?] 6:S[c..a?] 7:C[c...?]
+[t=15] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=7 vC=16 | 0:U[...a?] 1:U[c..a?] 2:U[c..a?] 3:U[c..a?] 4:U[c..a?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=16] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=7 vC=16 | 0:U[....?] 1:U[c...?] 2:U[c..a?] 3:U[c..a?] 4:U[c...?] 5:S[c...?] 6:S[c...?] 7:C[c..a?]
+[t=17] act=Analyse(4)     inv=0 rew=-16.00 cs=0 nC=7 vC=16 | 0:U[....?] 1:U[c..a?] 2:U[c..a?] 3:U[c..a?] 4:U[c...X] 5:S[c...?] 6:S[c..a?] 7:C[c...?]
+[t=18] act=Restore(2)     inv=0 rew=-16.00 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c..a?] 2:U[..R.?] 3:U[c..a?] 4:U[c...X] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=19] act=Analyse(4)     inv=0 rew=-17.00 cs=0 nC=7 vC=16 | 0:U[c..a?] 1:U[c...?] 2:U[..R.?] 3:U[c..a?] 4:U[c...X] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=20] act=Restore(0)     inv=0 rew=-16.00 cs=0 nC=6 vC=15 | 0:U[..R.?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[c..aX] 5:S[c...?] 6:S[c...?] 7:C[c..a?]
+[t=21] act=Restore(4)     inv=0 rew=-17.00 cs=0 nC=6 vC=15 | 0:U[..R.?] 1:U[c..a?] 2:U[c..a?] 3:U[c..a?] 4:U[..R.?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=22] act=Reconnect(0)   inv=1 rew=-16.25 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c...?] 2:U[c..a?] 3:U[c...?] 4:U[..R.?] 5:S[c...?] 6:S[c..a?] 7:C[c...?]
+[t=23] act=Restore(2)     inv=0 rew=-16.00 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c..a?] 2:U[..R.?] 3:U[c..a?] 4:U[c...?] 5:S[c...?] 6:S[c..a?] 7:C[c..a?]
+[t=24] act=Analyse(4)     inv=0 rew=-16.00 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c..a?] 2:U[..R.?] 3:U[c..a?] 4:U[c...X] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=25] act=Analyse(4)     inv=0 rew=-16.00 cs=0 nC=7 vC=16 | 0:U[....?] 1:U[c...?] 2:U[c...?] 3:U[c..a?] 4:U[c..aX] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=26] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=7 vC=16 | 0:U[....?] 1:U[c..a?] 2:U[c..a?] 3:U[c..a?] 4:U[c..aX] 5:S[c...?] 6:S[c...?] 7:C[c..a?]
+[t=27] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=7 vC=16 | 0:U[....?] 1:U[c..a?] 2:U[c..a?] 3:U[c..a?] 4:U[c..aX] 5:S[c...?] 6:S[c..a?] 7:C[c...?]
+[t=28] act=Restore(2)     inv=0 rew=-17.00 cs=0 nC=7 vC=16 | 0:U[c..a?] 1:U[c..a?] 2:U[..R.?] 3:U[c...?] 4:U[c...X] 5:S[c...?] 6:S[c..a?] 7:C[c..a?]
+[t=29] act=Restore(0)     inv=0 rew=-17.00 cs=0 nC=6 vC=15 | 0:U[..R.?] 1:U[c...?] 2:U[..R.?] 3:U[c..a?] 4:U[c..aX] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=30] act=Restore(4)     inv=0 rew=-16.00 cs=0 nC=5 vC=14 | 0:U[..R.?] 1:U[c...?] 2:U[....?] 3:U[c..a?] 4:U[..R.?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=31] act=Reconnect(1)   inv=1 rew=-15.25 cs=0 nC=5 vC=14 | 0:U[....?] 1:U[c..a?] 2:U[....?] 3:U[c...?] 4:U[..R.?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=32] act=Reconnect(1)   inv=1 rew=-14.25 cs=0 nC=5 vC=14 | 0:U[....?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[....?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=33] act=Reconnect(1)   inv=1 rew=-14.25 cs=0 nC=5 vC=14 | 0:U[....?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[....?] 5:S[c...?] 6:S[c..a?] 7:C[c...?]
+[t=34] act=Restore(2)     inv=0 rew=-16.00 cs=0 nC=6 vC=15 | 0:U[c..a?] 1:U[c...?] 2:U[..R.?] 3:U[c...?] 4:U[....?] 5:S[c..a?] 6:S[c..a?] 7:C[c...?]
+[t=35] act=Restore(0)     inv=0 rew=-16.00 cs=0 nC=5 vC=14 | 0:U[..R.?] 1:U[c...?] 2:U[..R.?] 3:U[c...?] 4:U[....?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=36] act=Restore(0)     inv=1 rew=-16.25 cs=0 nC=6 vC=15 | 0:U[..R.?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[c..a?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=37] act=Reconnect(1)   inv=1 rew=-15.25 cs=0 nC=6 vC=15 | 0:U[...a?] 1:U[c..a?] 2:U[....?] 3:U[c...?] 4:U[c..a?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=38] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=7 vC=16 | 0:U[....?] 1:U[c..a?] 2:U[c..a?] 3:U[c..a?] 4:U[c..a?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=39] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=7 vC=16 | 0:U[....?] 1:U[c..a?] 2:U[c...?] 3:U[c...?] 4:U[c...?] 5:S[c...?] 6:S[c...?] 7:C[c..a?]
+[t=40] act=Restore(0)     inv=0 rew=-17.00 cs=0 nC=7 vC=16 | 0:U[..R.?] 1:U[c...?] 2:U[c..a?] 3:U[c..a?] 4:U[c..a?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+
+----------------------------------------------------------------------
+Episodio #6 — episodio con piu' azioni rare
+  reward=-344.00  step=25  vittoria=False  sconfitta_tot=True  critico_mai_comp=False  invalide=64.0%
+
+[t=01] act=Restore(0)     inv=0 rew= -2.00 cs=0 nC=1 vC=1  | 0:U[..R.?] 1:U[...a?] 2:U[....?] 3:U[c..a?] 4:U[....?] 5:S[....?] 6:S[...a?] 7:C[....?]
+[t=02] act=Restore(2)     inv=0 rew= -3.00 cs=0 nC=1 vC=1  | 0:U[..R.?] 1:U[....?] 2:U[..R.?] 3:U[c..a?] 4:U[....?] 5:S[....?] 6:S[....?] 7:C[....?]
+[t=03] act=Reconnect(1)   inv=1 rew= -2.25 cs=0 nC=1 vC=1  | 0:U[....?] 1:U[....?] 2:U[..R.?] 3:U[c..a?] 4:U[....?] 5:S[....?] 6:S[....?] 7:C[....?]
+[t=04] act=Restore(0)     inv=0 rew=-14.00 cs=0 nC=4 vC=13 | 0:U[..R.?] 1:U[....?] 2:U[....?] 3:U[c...?] 4:U[....?] 5:S[c..a?] 6:S[c..a?] 7:C[c...?]
+[t=05] act=Restore(0)     inv=1 rew=-15.25 cs=0 nC=5 vC=14 | 0:U[..R.?] 1:U[....?] 2:U[....?] 3:U[c..a?] 4:U[c..a?] 5:S[c...?] 6:S[c...?] 7:C[c..a?]
+[t=06] act=Restore(4)     inv=0 rew=-15.00 cs=0 nC=5 vC=14 | 0:U[....?] 1:U[....?] 2:U[c..a?] 3:U[c..a?] 4:U[..R.?] 5:S[c...?] 6:S[c...?] 7:C[c...?]
+[t=07] act=Restore(2)     inv=0 rew=-15.00 cs=0 nC=4 vC=13 | 0:U[....?] 1:U[....?] 2:U[..R.?] 3:U[c..a?] 4:U[..R.?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=08] act=Reconnect(1)   inv=1 rew=-14.25 cs=0 nC=4 vC=13 | 0:U[....?] 1:U[....?] 2:U[..R.?] 3:U[c...?] 4:U[....?] 5:S[c...?] 6:S[c..a?] 7:C[c..a?]
+[t=09] act=Restore(0)     inv=0 rew=-14.00 cs=0 nC=4 vC=13 | 0:U[..R.?] 1:U[...a?] 2:U[....?] 3:U[c..a?] 4:U[....?] 5:S[c...?] 6:S[c...?] 7:C[c..a?]
+[t=10] act=Analyse(4)     inv=0 rew=-15.00 cs=0 nC=5 vC=14 | 0:U[..R.?] 1:U[c...?] 2:U[....?] 3:U[c..a?] 4:U[....h] 5:S[c...?] 6:S[c..a?] 7:C[c..a?]
+[t=11] act=Analyse(4)     inv=0 rew=-15.00 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[c...?] 5:S[c..a?] 6:S[c...?] 7:C[c..a?]
+[t=12] act=Reconnect(1)   inv=1 rew=-15.25 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c..a?] 2:U[....?] 3:U[c...?] 4:U[c..a?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=13] act=Reconnect(1)   inv=1 rew=-15.25 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[c..a?] 5:S[c..a?] 6:S[c..a?] 7:C[c...?]
+[t=14] act=Reconnect(2)   inv=1 rew=-15.25 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c..a?] 2:U[....?] 3:U[c...?] 4:U[c..a?] 5:S[c..a?] 6:S[c..a?] 7:C[c...?]
+[t=15] act=Reconnect(2)   inv=1 rew=-15.25 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[c..a?] 5:S[c...?] 6:S[c...?] 7:C[c..a?]
+[t=16] act=Reconnect(1)   inv=1 rew=-15.25 cs=0 nC=6 vC=15 | 0:U[....?] 1:U[c...?] 2:U[....?] 3:U[c..a?] 4:U[c..a?] 5:S[c...?] 6:S[c...?] 7:C[c...?]
+[t=17] act=Restore(4)     inv=0 rew=-15.00 cs=0 nC=5 vC=14 | 0:U[....?] 1:U[c..a?] 2:U[...a?] 3:U[c..a?] 4:U[..R.?] 5:S[c...?] 6:S[c..a?] 7:C[c..a?]
+[t=18] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=6 vC=15 | 0:U[c..a?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[..R.?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=19] act=Reconnect(1)   inv=1 rew=-15.25 cs=0 nC=6 vC=15 | 0:U[c..a?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[....?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=20] act=Reconnect(1)   inv=1 rew=-15.25 cs=0 nC=6 vC=15 | 0:U[c..a?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[....?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=21] act=Reconnect(1)   inv=1 rew=-15.25 cs=0 nC=6 vC=15 | 0:U[c..a?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[....?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=22] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=7 vC=16 | 0:U[c..a?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[c..a?] 5:S[c...?] 6:S[c...?] 7:C[c..a?]
+[t=23] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=7 vC=16 | 0:U[c..a?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[c..a?] 5:S[c..a?] 6:S[c..a?] 7:C[c..a?]
+[t=24] act=Reconnect(1)   inv=1 rew=-16.25 cs=0 nC=7 vC=16 | 0:U[c...?] 1:U[c..a?] 2:U[....?] 3:U[c..a?] 4:U[c..a?] 5:S[c..a?] 6:S[c..a?] 7:C[c...?]
+[t=25] act=Reconnect(2)   inv=1 rew=-17.25 cs=0 nC=8 vC=17 | 0:U[c...?] 1:U[c..a?] 2:U[c...?] 3:U[c..a?] 4:U[c..a?] 5:S[c...?] 6:S[c..a?] 7:C[c..a?]

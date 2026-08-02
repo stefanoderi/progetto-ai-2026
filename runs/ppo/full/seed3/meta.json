@@ -1,0 +1,26 @@
+{
+  "algorithm": "PPO",
+  "mode": "full",
+  "algo_seed": 1003,
+  "normalize_reward": false,
+  "reward_scale_denominator": null,
+  "total_timesteps": 500000,
+  "eval_freq": 25000,
+  "n_eval_episodes": 50,
+  "hparams": {
+    "learning_rate": 0.0003,
+    "n_steps": 2048,
+    "batch_size": 64,
+    "n_epochs": 10,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "ent_coef": 0.0,
+    "vf_coef": 0.5,
+    "max_grad_norm": 0.5
+  },
+  "training_time_seconds": 464.23611974716187,
+  "best_mean_reward_eval": -28.455,
+  "final_mean_reward_eval": -41.215,
+  "sb3_version": "2.8.0"
+}
